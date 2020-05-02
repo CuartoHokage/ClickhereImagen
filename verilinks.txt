@@ -1,0 +1,34 @@
+https://codelatin.com/sistema-de-inicio-de-sesion-basico-con-node-js-express-y-mysql/
+https://ed.team/comunidad/implementar-roles-con-node-js
+
+https://sweetalert2.github.io/
+
+https://jsfiddle.net/26fut4aL/9/
+
+https://es.stackoverflow.com/questions/214422/validar-boton-de-sweetalert-en-js
+
+
+https://www.youtube.com/watch?v=TisjtrKJXM0
+
+
+// problema de los 15 productos 
+https://stackoverflow.com/questions/2507844/how-to-use-jquery-to-paginate-json-data
+https://www.youtube.com/watch?v=2BoSBaWvFhM
+
+
+
+// tienda 
+https://programarivm.com/un-carrito-de-la-compra-javascript-en-la-parte-cliente/
+https://dantecervantes.com/canasta-compras-javascript/
+
+//convertir pdf para enviar por formulario
+https://stackoverflow.com/questions/32941366/how-to-export-json-data-to-pdf-file-with-specify-format-with-nodejs
+https://stackoverflow.com/questions/32941366/how-to-export-json-data-to-pdf-file-with-specify-format-with-nodejs
+
+https://greensock.com/
+
+//DEJAR EJECUTADA APLICACION COMO SERVICIO (aprueba de errores)
+https://desarrolloweb.com/articulos/ejecutar-aplicacion-nodejs-pm2.html
+
+//chat de facebook en la página web
+https://www.youtube.com/watch?v=TisjtrKJXM0

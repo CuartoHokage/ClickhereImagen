@@ -1,0 +1,36 @@
+<body>
+
+    <br>
+    <br>
+    <div class="container">
+        <div id="contenido" class="">
+            <div class="row">
+                {{#if data}}
+
+                {{#each data}}
+                <div class="col-md-4 product-block" id="{{this.PRDIDENTI}}">
+                    <section class="box style1">
+
+                        <div class="main-category-image">
+                            <a title="{{this.PRDNOMBRE}}" href="/api/producto-single/{{this.PRDIDENTI}}"><img onerror="this.src='/imagenes/sin_imagen.jpg';"
+                                class="thumbnail img-portfolio img-hover mb-3" src="/imagenes/{{this.PRDIDENTI}}.png"
+                                width="200" height="200"></a>
+                            <div class="caption">
+                                <div><strong>Código: </strong> {{this.PRDIDENTI}}</div>
+                                <h6 class="alienar"> <strong>Descripcion: </strong> {{this.PRDNOMBRE}}</h6>
+                                <div class="price-mob"><strong>Precio: </strong>$ {{this.PRDPVP}}</div>
+                                <div class="price-mob"><strong>Stock: </strong>{{this.PUBSTOCK}}</div>
+                                <a href="/api/add6/{{ this.PRDIDENTI }}" id="{{this.categorias}}"
+                                    class="btn btn-default pull-right" role="button"><i class="fa fa-shopping-cart"
+                                        aria-hidden="true"></i> Añadir al carrito</a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                {{/each}}
+                {{else}}
+                <p>No se encontraron productos.</p>
+                {{/if}}
+            </div>
+        </div>
+    </div>

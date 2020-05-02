@@ -1,0 +1,146 @@
+<div class="container">
+    {{# if products }}
+    <div class="cart page">
+        <ul class="list-group">
+            {{# each products }}
+            <li class="list-group-item clearfix">
+                <div class="col-xs-3">
+                  <img onerror="this.src='/imagenes/sin_imagen.jpg';"
+                                class="thumbnail img-portfolio img-hover mb-3" src="/imagenes/{{this.item.PRDIDENTI}}.png"
+                                width="200" height="200">
+                </div>
+                <div class="col-xs-5">
+                  
+                    <strong>{{ this.item.title }}</strong><br />
+                    <em>{{{this.item.PRDNOMBRE}}}</em>
+                </div>
+                <div class="col-xs-2 text-right">
+                    Cantidad: {{ this.quantity }}
+                </div>
+                <div class="col-xs-3 text-right">
+                    ${{ this.PRDPVP }}
+                </div>
+                <div class="col-xs-2 text-right">
+                    <a href="/api/remove/{{this.item.PRDIDENTI}}" class="btn btn-default"></i> Borrar</a>
+                </div>
+            </li>
+            {{/each}}
+            <br>
+            <p hidden id="importante">{{# each products as |item i| }} /////////Número item: {{i}} ******Codigo:
+                {{this.item.PRDIDENTI}} ****Descripcion: {{this.item.PRDNOMBRE}}
+                ******Cantidad: {{this.quantity}} ****** Precio unidad: {{this.item.PRDPVP}} ******Precio total:
+                {{this.PRDPVP}}/////////
+                {{/each}}</p>
+            <div class="container row">
+                <script>
+                    var parrafo = document.getElementById('importante');
+                    var contenido = parrafo.innerHTML;
+                    window.onload = function () {
+                        document.getElementsByName("orden").value = contenido;
+                    }
+                    var contenido = ''{{# each products as |item i| }}' /////////Número item: '{{i}}' ******Codigo: '{{this.item.PRDIDENTI}}' ****Descripcion: '{{this.item.PRDNOMBRE}}' ******Cantidad: '{{this.quantity}}' ****** Precio unidad: '{{this.item.PRDPVP}}' ******Precio total: '{{this.PRDPVP}}'/////////'{{/each}}' PRECIO TOTAL: XXXXX'{{totalPrice}}'XXXXX>';
+                    pdf.create(contenido).toFile('./salida.pdf', function (err, res) {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            console.log(res);
+                        }
+                    });
+                </script>
+                <div class="col-md-6">
+                    <script>
+            function validar() {
+              //obteniendo el valor que se puso en el campo text del formulario
+              var name = document.getElementById("nombre").value;
+              var email = document.getElementById("email").value;
+              var comentario = document.getElementById("comentario").value;
+              var telefono = document.getElementById("telefono").value;
+              var fail = swal.fire({
+                title: "Su petición no fue enviada",
+                text: "Por favor, asegurese de llenar todos los datos del formulario.",
+                icon: "warning",
+                buttons: true,
+              });
+              //la condición
+              if (name.length == 0 || /^\s+$/.test(name)) {
+                fail;
+                return false;
+              } else {
+                if (email.length == 0 || /^\s+$/.test(email)) {
+                  return false;
+                  fail;
+                } else {
+                  if (comentario.length == 0 || /^\s+$/.test(comentario)) {
+                    return false;
+                    fail;
+                  } else {
+                    if (telefono.length == 0 || /^\s+$/.test(telefono)) {
+                      return false;
+                      fail;
+                    } else {
+                      swal.fire({
+                        title: "Gracias por contactarnos",
+                        text: "Su petición fue enviada en breve nos contactaremos con usted.",
+                        icon: "success",
+                        buttons: true,
+                      })
+                      return true;
+                    }
+                  }
+
+                }
+
+              }
+
+
+            }
+          </script>
+                    <h2>Por favor, llene los datos de contacto para realizar el pedido</h2>
+                    <form action="/api/postmail_ordeCompra" id="formulario" method="post" onsubmit="return validar()"
+                        enctype="application/x-www-form-urlencoded">
+                        <h3 style="text-align: center;">Formulario de contacto:</h3>
+                        {{!-- Producto oculto --}}
+                        <textarea name="orden" name="hide" style="display:none;"
+                            id="orden">{{# each products as |item i| }} 
+                            ---------Número item: {{i}} _________Codigo: {{this.item.PRDIDENTI}}                   
+                            Descripcion: {{this.item.PRDNOMBRE}}                   
+                            Cantidad: {{this.quantity}}                  
+                            Precio unidad: {{this.item.PRDPVP}}                   
+                            Precio total: {{this.PRDPVP}}_________
+                            {{/each}}
+                             
+                            PRECIO TOTAL:                   {{totalPrice}}</textarea>
+
+                        {{!-- <input type="hidden" class="form-control" id="orden" name="orden" placeholder="Nombres"
+                            value={{# each products as |item i| }} Numero item: {{i}} <br>{{this.item.PRDNOMBRE}}_
+                        Cantidad: {{this.quantity}} Precio unidad: {{this.item.PRDPVP}} Precio total: {{this.PRDPVP}}
+                        <br> {{/each}}> --}}
+
+                        <br>
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombres">
+                        <br>
+                        <input type="email" id="email" class="form-control" name="email" placeholder="Correo">
+                        <br>
+                        
+                        <textarea  type="text" id="comentario" class="form-control" name="comentario"
+                            placeholder="Mensaje"></textarea>
+                        <br>
+                        <input id="prodId" name="razon" type="hidden" value="Pedido de productos.">
+                        <input type="number" id="telefono" class="form-control" name="telefono"
+                            placeholder="Telefono"><br>
+                        <input href="/api/removeALL"  type="submit" value="Confirmar" class="btn btn-primary" id="enviar">
+                        
+                    </form>
+                </div>
+            </div>
+        </ul>
+    </div>
+    <div class="text-right">
+        <strong style="color: red;">Total: $ {{ totalPrice }} </strong>
+    </div>
+    <hr>
+
+    {{ else }}
+    Tu carrito de pedidos esta vacío.
+    {{/if}}
+</div>
