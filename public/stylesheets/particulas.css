@@ -416,3 +416,9 @@ input[type=number] { -moz-appearance:textfield; }
               transform: scale(1); } }
   
   /*# sourceMappingURL=style.css.map */
+
+  /* Aspecto de las imágenes */
+  .img-portfolio{
+    object-position: center;
+        object-fit: contain;
+}
