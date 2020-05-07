@@ -1,15 +1,15 @@
 <div class="container">
     <div class="card">
-        <div class="container-fliud">
+        <div class="container-fluid">
             {{#if data}}
 
             <div class="wrapper row">
                 <div class="preview col-md-6">
 
                     <div class="preview-pic tab-content">
-                        <div class="tab-pane active" id="pic-1"><img src="/imagenes/{{data.PRDIDENTI}}.png" /></div>
+                        <div class="tab-pane active" id="pic-1"><img width="350" height="350" class="img-portfolio" src="/imagenes/{{data.PRDIDENTI}}.png" /></div>
                         
-                        <div class="tab-pane" id="pic-2"><img src="/imagenes/{{data.PRDIDENTI}}_{{data.contador}}.png" /></div>
+                        <div class="tab-pane" id="pic-2"><img width="50" height="50" class="img-portfolio" src="/imagenes/{{data.PRDIDENTI}}_{{data.contador}}.png" /></div>
                         
                         
                         <div class="tab-pane" id="pic-3"><img src="/imagenes/4141.png" /></div>
@@ -19,7 +19,7 @@
                     <ul class="preview-thumbnail nav nav-tabs">
                         <li class="active"><a data-target="#pic-1" data-toggle="tab"><img
                                     src="/imagenes/{{data.PRDIDENTI}}.png" /></a></li>
-                        <li><a data-target="#pic-2" data-toggle="tab"><img src="/imagenes/{{data.PRDIDENTI}}_{{data.contador}}.png" /></a></li>
+                        <li><a data-target="#pic-2" data-toggle="tab"><img width="50" height="50" class="img-portfolio" src="/imagenes/{{data.PRDIDENTI}}_{{data.contador}}.png" /></a></li>
 
                     </ul>
 
@@ -34,7 +34,9 @@
                     </h5>
 
                     <div class="action">
-                        <button class="add-to-cart btn btn-default" type="button">Añadir al carrito</button>
+                       <a href="/api/add6/{{ data.PRDIDENTI }}" id="{{this.categorias}}"
+                                    class="btn btn-default pull-right" role="button"><i class="fa fa-shopping-cart"
+                                        aria-hidden="true"></i> Añadir al carrito</a>
                     </div>
                 </div>
             </div>

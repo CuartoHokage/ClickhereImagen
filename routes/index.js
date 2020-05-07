@@ -423,7 +423,7 @@ api.get('/add6/:id', function (req, res, next) {
 	console.log(product[0])
 	cart.add(product[0], productId);
 	req.session.cart = cart;
-	res.redirect('/api/impresoras');
+	res.redirect('/');
 });
 
 api.get('/generador', dbControllers.getPortaStockIMAGENES_OBTENER);
