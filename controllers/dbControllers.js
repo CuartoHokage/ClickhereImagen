@@ -35,10 +35,12 @@ function getPortaStockIMAGENES_OBTENER(req, res) {
             comparador.push(result.recordset[producto]['PRDIDENTI']);
             if (comparador[producto - 1] == result.recordset[producto]['PRDIDENTI']) {
                 // Cambiar en servidor
+                // instruccionNombreImagen = 'C:/Users/Jaime Paz/Documents/paginas web/clickhere/clickhere/public/imagenes/' + result.recordset[producto]['PRDIDENTI'] + '_' + count + '.png'
                 instruccionNombreImagen = 'C:/Users/usuario/Documents/proyectos/clickhere-web/public/imagenes/' + result.recordset[producto]['PRDIDENTI'] + '_' + count + '.png'
                 count++;
             } else {
                 // Cambiar en servidor
+                // instruccionNombreImagen = 'C:/Users/Jaime Paz/Documents/paginas web/clickhere/clickhere/public/imagenes/' + result.recordset[producto]['PRDIDENTI'] + '.png'
                 instruccionNombreImagen = 'C:/Users/usuario/Documents/proyectos/clickhere-web/public/imagenes/' + result.recordset[producto]['PRDIDENTI'] + '.png';
                 count = 1;
             }
